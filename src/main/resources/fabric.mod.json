@@ -1,0 +1,42 @@
+{
+	"schemaVersion": 1,
+	"id": "nexuscarry",
+	"version": "${version}",
+	"name": "NexusCarry",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Farpo",
+		"DinoTheOogle"
+	],
+	"accessWidener" : "nexuscarry.accesswidener",
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/nexuscarry/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"de.nexusrealms.carry.NexusCarry"
+		],
+		"client": [
+			"de.nexusrealms.carry.client.NexusCarryClient"
+		],
+		"fabric-datagen": [
+          "de.nexusrealms.carry.datagen.NexusCarryDataGenerator"
+		]
+	},
+	"mixins": [
+		"nexuscarry.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.17.2",
+		"minecraft": "~1.21.8",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

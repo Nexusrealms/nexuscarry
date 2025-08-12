@@ -1,0 +1,3 @@
+accessWidener v2 named
+extendable method net/minecraft/client/data/Model createTextureMap (Lnet/minecraft/client/data/TextureMap;)Ljava/util/Map;
+accessible field net/minecraft/client/data/Model parent Ljava/util/Optional;
