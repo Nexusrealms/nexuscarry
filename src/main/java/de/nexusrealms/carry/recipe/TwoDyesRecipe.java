@@ -54,7 +54,7 @@ public class TwoDyesRecipe extends SpecialCraftingRecipe {
     }
     private boolean isBagInValidSlot(int slot, int width){
         return switch (width){
-            case 2 -> slot % 2 == 1;
+            case 2 -> true;
             case 3 -> slot % 3 == 1;
             default -> false;
         };
@@ -74,11 +74,11 @@ public class TwoDyesRecipe extends SpecialCraftingRecipe {
         for (int i = 0; i < input.size(); i++) {
             ItemStack stack = input.getStackInSlot(i);
             if(stack.isEmpty()) continue;
-            if(i % input.getWidth() == 0) {
-                leftStacks.add((DyeItem) stack.getItem());
-            } else if(stack.isIn(CarryItems.Tags.DOUBLE_DYEABLE)) {
+            if(stack.isIn(CarryItems.Tags.DOUBLE_DYEABLE)) {
                 result = stack.copy();
-            } else if(isInRightmostColumn(i, input.getWidth())){
+            } else if (i % input.getWidth() == 0) {
+                leftStacks.add((DyeItem) stack.getItem());
+            } else if (isInRightmostColumn(i, input.getWidth())) {
                 rightStacks.add((DyeItem) stack.getItem());
             }
         }
