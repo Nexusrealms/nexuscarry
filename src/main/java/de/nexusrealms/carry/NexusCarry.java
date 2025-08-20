@@ -1,6 +1,7 @@
 package de.nexusrealms.carry;
 
 import de.nexusrealms.carry.item.CarryItems;
+import de.nexusrealms.carry.network.CarryPackets;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.util.Identifier;
@@ -24,6 +25,7 @@ public class NexusCarry implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		CarryItems.init();
+		CarryPackets.init();
 		LOGGER.info("Hello Fabric world!");
 	}
 }

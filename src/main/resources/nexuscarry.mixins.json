@@ -1,17 +1,18 @@
 {
-	"required": true,
-	"package": "de.nexusrealms.carry.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"ExampleMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
-	},
-	"client": [
-		"client.TintSourceTypesMixin"
-	]
+  "required": true,
+  "package": "de.nexusrealms.carry.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ExampleMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+    "client.InventoryScreenMixin",
+    "client.TintSourceTypesMixin"
+  ]
 }

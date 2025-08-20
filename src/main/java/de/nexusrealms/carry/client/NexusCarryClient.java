@@ -2,6 +2,7 @@ package de.nexusrealms.carry.client;
 
 import de.nexusrealms.carry.NexusCarry;
 import de.nexusrealms.carry.item.CarryItems;
+import de.nexusrealms.carry.network.CarryPackets;
 import dev.emi.trinkets.api.client.TrinketRendererRegistry;
 import net.fabricmc.api.ClientModInitializer;
 
