@@ -51,5 +51,7 @@ public class CarryItems {
     }
     public static class Tags {
         public static final TagKey<Item> TRANSFERS_PRIMARY_COLOR_AS_SECONDARY = TagKey.of(RegistryKeys.ITEM, NexusCarry.id("transfers_primary_color_as_secondary"));
+        public static final TagKey<Item> DOUBLE_DYEABLE = TagKey.of(RegistryKeys.ITEM, NexusCarry.id("double_dyeable"));
+
     }
 }
