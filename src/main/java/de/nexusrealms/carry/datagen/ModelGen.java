@@ -2,6 +2,7 @@ package de.nexusrealms.carry.datagen;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import de.nexusrealms.carry.item.CarryItems;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Block;
@@ -30,7 +31,7 @@ public class ModelGen extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-
+        itemModelGenerator.registerDyeable(CarryItems.LEATHER_STRAPS, 0xffFFA8A8);
     }
     private void registerSpawnEgg(ItemModelGenerator generator, EntityType<?> entityType){
         if(SpawnEggItem.forEntity(entityType) instanceof SpawnEggItem item){

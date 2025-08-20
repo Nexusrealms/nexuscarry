@@ -1,0 +1,18 @@
+{
+  "type": "nexuscarry:crafting_special_craftbag",
+  "category": "equipment",
+  "key": {
+    "!": "nexuscarry:leather_straps",
+    "L": "minecraft:leather",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    "LS ",
+    "L !",
+    " LS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "nexuscarry:satchel"
+  }
+}

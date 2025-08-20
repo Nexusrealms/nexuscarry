@@ -3,6 +3,7 @@ package de.nexusrealms.carry;
 import de.nexusrealms.carry.item.BagItem;
 import de.nexusrealms.carry.item.CarryItems;
 import de.nexusrealms.carry.network.CarryPackets;
+import de.nexusrealms.carry.recipe.CarryRecipes;
 import de.nexusrealms.dipdye.api.CauldronDipApi;
 import net.fabricmc.api.ModInitializer;
 
@@ -33,6 +34,7 @@ public class NexusCarry implements ModInitializer {
 		// Proceed with mild caution.
 		CarryItems.init();
 		CarryPackets.init();
+		CarryRecipes.init();
 		LOGGER.info("Hello Fabric world!");
 		if(FabricLoader.getInstance().isModLoaded("dip-dye")) DipDyeCompat.init();
 	}

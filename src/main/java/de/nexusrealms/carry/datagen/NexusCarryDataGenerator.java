@@ -9,5 +9,7 @@ public class NexusCarryDataGenerator implements DataGeneratorEntrypoint {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		pack.addProvider(LangGen::new);
 		pack.addProvider(TagGen.ItemGen::new);
+		pack.addProvider(ModelGen::new);
+		pack.addProvider(RecipeGen::new);
 	}
 }

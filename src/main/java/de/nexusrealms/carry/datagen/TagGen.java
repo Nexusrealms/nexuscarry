@@ -21,7 +21,9 @@ public class TagGen {
         @Override
         protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
             valueLookupBuilder(ItemTags.DYEABLE)
-                    .add(CarryItems.SATCHEL, CarryItems.BACKPACK);
+                    .add(CarryItems.SATCHEL, CarryItems.BACKPACK, CarryItems.LEATHER_STRAPS);
+            valueLookupBuilder(CarryItems.Tags.TRANSFERS_PRIMARY_COLOR_AS_SECONDARY)
+                    .add(CarryItems.LEATHER_STRAPS);
         }
     }
 

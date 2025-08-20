@@ -19,6 +19,8 @@ public class LangGen extends FabricLanguageProvider {
     private void generateItemTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder){
         translationBuilder.add(CarryItems.SATCHEL, "Satchel");
         translationBuilder.add(CarryItems.BACKPACK, "Backpack");
+        translationBuilder.add(CarryItems.LEATHER_STRAPS, "Leather Straps");
+
     }
     private void generateEntityTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder){
 

@@ -17,6 +17,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Rarity;
 
 import java.util.function.BiConsumer;
@@ -26,6 +27,7 @@ public class CarryItems {
     public static final Item SATCHEL = create("satchel", BagItem::new, new Item.Settings().maxCount(1), ItemGroups.TOOLS, (fabricItemGroupEntries, bagItem) -> fabricItemGroupEntries.addAfter(Items.PINK_BUNDLE, bagItem));
     public static final Item BACKPACK = create("backpack", BagItem::new, new Item.Settings().maxCount(1), ItemGroups.TOOLS, (fabricItemGroupEntries, bagItem) -> fabricItemGroupEntries.addAfter(SATCHEL, bagItem));
 
+    public static final Item LEATHER_STRAPS = create("leather_straps", Item::new, new Item.Settings(), ItemGroups.INGREDIENTS);
     private static <T extends Item> T create(String name, Function<Item.Settings, T> constructor, Item.Settings settings, RegistryKey<ItemGroup> itemGroup){
         return create(name, constructor, settings, itemGroup, FabricItemGroupEntries::add);
     }
@@ -46,5 +48,8 @@ public class CarryItems {
             return Registry.register(Registries.DATA_COMPONENT_TYPE, NexusCarry.id(name), ComponentType.<T>builder().codec(codec).packetCodec(packetCodec).build());
         }
         public static void init(){}
+    }
+    public static class Tags {
+        public static final TagKey<Item> TRANSFERS_PRIMARY_COLOR_AS_SECONDARY = TagKey.of(RegistryKeys.ITEM, NexusCarry.id("transfers_primary_color_as_secondary"));
     }
 }
