@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "nexuscarry:item/satchel_base",
+    "layer1": "nexuscarry:item/satchel_straps",
+    "layer2": "nexuscarry:item/satchel_overlay"
+  }
+}

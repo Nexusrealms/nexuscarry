@@ -15,9 +15,17 @@ public class NexusCarryClient implements ClientModInitializer {
                 SatchelModel::getBaseTexturedModeData,
                 SatchelModel::getDyedTexturedModeData,
                 SatchelModel::getStrapTexturedModeData,
-                NexusCarry.id("textures/item/satchel_base.png"),
-                NexusCarry.id("textures/item/satchel_dye.png"),
-                NexusCarry.id("textures/item/satchel_straps.png")
+                NexusCarry.id("textures/item/wearable/satchel_overlay.png"),
+                NexusCarry.id("textures/item/wearable/satchel_base.png"),
+                NexusCarry.id("textures/item/wearable/satchel_straps.png")
+        ));
+        TrinketRendererRegistry.registerRenderer(CarryItems.BACKPACK, new BagRenderer(
+                BackpackModel::getBaseTexturedModeData,
+                BackpackModel::getDyedTexturedModeData,
+                BackpackModel::getStrapTexturedModeData,
+                NexusCarry.id("textures/item/wearable/backpack_overlay.png"),
+                NexusCarry.id("textures/item/wearable/backpack_base.png"),
+                NexusCarry.id("textures/item/wearable/backpack_straps.png")
         ));
     }
 }

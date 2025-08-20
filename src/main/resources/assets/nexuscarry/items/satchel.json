@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "nexuscarry:item/satchel",
+    "tints": [
+      {
+        "type": "minecraft:dye",
+        "default": 16763812
+      },
+      {
+        "type": "nexuscarry:strap_dye",
+        "default": 16754856
+      }
+    ]
+  }
+}

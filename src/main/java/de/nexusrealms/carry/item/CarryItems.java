@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.component.ComponentType;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ContainerComponent;
 import net.minecraft.component.type.DyedColorComponent;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.*;
@@ -23,6 +24,8 @@ import java.util.function.Function;
 
 public class CarryItems {
     public static final Item SATCHEL = create("satchel", BagItem::new, new Item.Settings().maxCount(1).component(DataComponentTypes.DYED_COLOR, new DyedColorComponent(0xffcba4)).component(Components.BAG_STRAP_COLOR, new DyedColorComponent(0xffa8a8)), ItemGroups.INGREDIENTS);
+    public static final Item BACKPACK = create("backpack", BagItem::new, new Item.Settings().maxCount(1).component(DataComponentTypes.DYED_COLOR, new DyedColorComponent(0xffcba4)).component(Components.BAG_STRAP_COLOR, new DyedColorComponent(0xffa8a8)), ItemGroups.INGREDIENTS);
+
     private static <T extends Item> T create(String name, Function<Item.Settings, T> constructor, Item.Settings settings, RegistryKey<ItemGroup> itemGroup){
         return create(name, constructor, settings, itemGroup, FabricItemGroupEntries::add);
     }

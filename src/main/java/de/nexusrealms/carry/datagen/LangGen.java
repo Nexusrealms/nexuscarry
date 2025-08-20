@@ -1,5 +1,6 @@
 package de.nexusrealms.carry.datagen;
 
+import de.nexusrealms.carry.item.CarryItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.entity.EntityType;
@@ -16,8 +17,8 @@ public class LangGen extends FabricLanguageProvider {
     private void generateBlockTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder){
     }
     private void generateItemTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder){
-
-
+        translationBuilder.add(CarryItems.SATCHEL, "Satchel");
+        translationBuilder.add(CarryItems.BACKPACK, "Backpack");
     }
     private void generateEntityTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder){
 
