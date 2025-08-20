@@ -1,28 +1,20 @@
 package de.nexusrealms.carry.client;
 
+import de.nexusrealms.carry.item.BagItem;
 import de.nexusrealms.carry.item.CarryItems;
 import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.client.TrinketRenderer;
-import net.minecraft.client.model.Model;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.client.render.entity.state.BipedEntityRenderState;
 import net.minecraft.client.render.entity.state.EntityRenderState;
 import net.minecraft.client.render.entity.state.LivingEntityRenderState;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.component.Component;
-import net.minecraft.component.ComponentType;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.DyedColorComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.ColorHelper;
 
 import java.util.function.Supplier;
 
@@ -59,16 +51,12 @@ public class BagRenderer implements TrinketRenderer {
         if(strapModel == null){
             strapModel = new SatchelModel(strapLayer.get().createModel());
         }
-        int color = getColor(stack, DataComponentTypes.DYED_COLOR);
-        int strapColor = getColor(stack, CarryItems.Components.BAG_STRAP_COLOR);
+        int color = BagItem.getColor(stack, DataComponentTypes.DYED_COLOR, 0xffcba4);
+        int strapColor = BagItem.getColor(stack, CarryItems.Components.BAG_STRAP_COLOR, 0xffa8a8);
         baseModel.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(overlayTexture)), light, OverlayTexture.DEFAULT_UV, 0xffffffff);
         dyeModel.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(dyeTexture)), light, OverlayTexture.DEFAULT_UV, color);
         strapModel.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(strapTexture)), light, OverlayTexture.DEFAULT_UV, strapColor);
 
     }
 
-    public static int getColor(ItemStack stack, ComponentType<DyedColorComponent> componentType) {
-        DyedColorComponent dyedColorComponent = stack.get(componentType);
-        return dyedColorComponent != null ? ColorHelper.fullAlpha(dyedColorComponent.rgb()) : 0xffffffff;
-    }
 }

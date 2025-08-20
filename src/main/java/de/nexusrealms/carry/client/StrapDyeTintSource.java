@@ -2,8 +2,8 @@ package de.nexusrealms.carry.client;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import de.nexusrealms.carry.item.BagItem;
 import de.nexusrealms.carry.item.CarryItems;
-import net.minecraft.client.render.item.tint.DyeTintSource;
 import net.minecraft.client.render.item.tint.TintSource;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
@@ -16,7 +16,7 @@ public record StrapDyeTintSource(int defaultColor) implements TintSource {
 
     @Override
     public int getTint(ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity user) {
-        return BagRenderer.getColor(stack, CarryItems.Components.BAG_STRAP_COLOR);
+        return BagItem.getColor(stack, CarryItems.Components.BAG_STRAP_COLOR, defaultColor);
     }
 
     @Override

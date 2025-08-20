@@ -1,10 +1,12 @@
 package de.nexusrealms.carry.datagen;
 
 
+import de.nexusrealms.carry.item.CarryItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -18,7 +20,8 @@ public class TagGen {
 
         @Override
         protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-
+            valueLookupBuilder(ItemTags.DYEABLE)
+                    .add(CarryItems.SATCHEL, CarryItems.BACKPACK);
         }
     }
 

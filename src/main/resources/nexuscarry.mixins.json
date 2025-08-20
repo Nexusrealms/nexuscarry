@@ -3,7 +3,8 @@
   "package": "de.nexusrealms.carry.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ExampleMixin"
+    "ExampleMixin",
+    "GenericContainerScreenHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

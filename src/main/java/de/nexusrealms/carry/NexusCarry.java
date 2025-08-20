@@ -1,9 +1,16 @@
 package de.nexusrealms.carry;
 
+import de.nexusrealms.carry.item.BagItem;
 import de.nexusrealms.carry.item.CarryItems;
 import de.nexusrealms.carry.network.CarryPackets;
+import de.nexusrealms.dipdye.api.CauldronDipApi;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.component.ComponentType;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.DyedColorComponent;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,5 +34,8 @@ public class NexusCarry implements ModInitializer {
 		CarryItems.init();
 		CarryPackets.init();
 		LOGGER.info("Hello Fabric world!");
+		if(FabricLoader.getInstance().isModLoaded("dip-dye")) DipDyeCompat.init();
 	}
+
+
 }
