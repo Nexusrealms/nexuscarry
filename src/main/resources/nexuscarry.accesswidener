@@ -3,12 +3,3 @@ extendable method net/minecraft/client/data/Model createTextureMap (Lnet/minecra
 accessible field net/minecraft/client/data/Model parent Ljava/util/Optional;
 accessible field net/minecraft/recipe/ShapedRecipe result Lnet/minecraft/item/ItemStack;
 accessible field net/minecraft/recipe/ShapedRecipe raw Lnet/minecraft/recipe/RawShapedRecipe;
-
-accessible method net/minecraft/data/recipe/ShapedRecipeJsonBuilder validate (Lnet/minecraft/registry/RegistryKey;)Lnet/minecraft/recipe/RawShapedRecipe;
-accessible field net/minecraft/data/recipe/ShapedRecipeJsonBuilder criteria Ljava/util/Map;
-accessible field net/minecraft/data/recipe/ShapedRecipeJsonBuilder group Ljava/lang/String;
-accessible    field    net/minecraft/data/recipe/ShapedRecipeJsonBuilder    output    Lnet/minecraft/item/Item;
-accessible    field    net/minecraft/data/recipe/ShapedRecipeJsonBuilder    count    I
-accessible    field    net/minecraft/data/recipe/ShapedRecipeJsonBuilder    showNotification    Z
-accessible method net/minecraft/data/recipe/ShapedRecipeJsonBuilder <init> (Lnet/minecraft/registry/RegistryEntryLookup;Lnet/minecraft/recipe/book/RecipeCategory;Lnet/minecraft/item/ItemConvertible;I)V
-accessible    field    net/minecraft/data/recipe/ShapedRecipeJsonBuilder    category    Lnet/minecraft/recipe/book/RecipeCategory;

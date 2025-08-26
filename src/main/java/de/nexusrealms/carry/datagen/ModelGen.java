@@ -31,7 +31,6 @@ public class ModelGen extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.registerDyeable(CarryItems.LEATHER_STRAPS, 0xffFFA8A8);
     }
     private void registerSpawnEgg(ItemModelGenerator generator, EntityType<?> entityType){
         if(SpawnEggItem.forEntity(entityType) instanceof SpawnEggItem item){

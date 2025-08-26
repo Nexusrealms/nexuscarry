@@ -10,7 +10,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
 public class CarryRecipes {
-    public static final RecipeSerializer<CraftBagRecipe> CRAFT_BAG = createSerializer("crafting_special_craftbag", new CraftBagRecipe.Serializer());
     public static final RecipeSerializer<TwoDyesRecipe> TWO_DYES = createSerializer("crafting_special_twodyes", new SpecialCraftingRecipe.SpecialRecipeSerializer<>(TwoDyesRecipe::new));
 
     private static <S extends RecipeSerializer<T>, T extends Recipe<?>> RecipeSerializer<T> createSerializer(String name, S serializer){

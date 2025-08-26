@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.data.recipe.RecipeGenerator;
+import net.minecraft.data.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryKeys;
@@ -36,14 +37,23 @@ public class RecipeGen extends FabricRecipeProvider {
 
         @Override
         public void generate() {
-            BagRecipeJsonBuilder.create(registries.getOrThrow(RegistryKeys.ITEM), RecipeCategory.TOOLS, CarryItems.SATCHEL)
+            ShapedRecipeJsonBuilder.create(registries.getOrThrow(RegistryKeys.ITEM), RecipeCategory.TOOLS, CarryItems.BACKPACK)
                     .pattern("LS ")
-                    .pattern("L !")
+                    .pattern("I L")
                     .pattern(" LS")
-                    .input('L', Items.LEATHER)
-                    .input('S', Items.STRING)
-                    .input('!', CarryItems.LEATHER_STRAPS)
-                    .criterion(hasItem(CarryItems.LEATHER_STRAPS), conditionsFromItem(CarryItems.LEATHER_STRAPS))
+                    .input('L', Items.RABBIT_HIDE)
+                    .input('S', Items.LEATHER)
+                    .input('I', Items.COPPER_INGOT)
+                    .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
+                    .offerTo(exporter);
+            ShapedRecipeJsonBuilder.create(registries.getOrThrow(RegistryKeys.ITEM), RecipeCategory.TOOLS, CarryItems.SATCHEL)
+                    .pattern("SLS")
+                    .pattern("L L")
+                    .pattern(" I ")
+                    .input('L', Items.RABBIT_HIDE)
+                    .input('S', Items.LEATHER)
+                    .input('I', Items.COPPER_INGOT)
+                    .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
                     .offerTo(exporter);
         }
     }

@@ -27,7 +27,6 @@ public class CarryItems {
     public static final Item SATCHEL = create("satchel", BagItem::new, new Item.Settings().maxCount(1), ItemGroups.TOOLS, (fabricItemGroupEntries, bagItem) -> fabricItemGroupEntries.addAfter(Items.PINK_BUNDLE, bagItem));
     public static final Item BACKPACK = create("backpack", BagItem::new, new Item.Settings().maxCount(1), ItemGroups.TOOLS, (fabricItemGroupEntries, bagItem) -> fabricItemGroupEntries.addAfter(SATCHEL, bagItem));
 
-    public static final Item LEATHER_STRAPS = create("leather_straps", Item::new, new Item.Settings(), ItemGroups.INGREDIENTS);
     private static <T extends Item> T create(String name, Function<Item.Settings, T> constructor, Item.Settings settings, RegistryKey<ItemGroup> itemGroup){
         return create(name, constructor, settings, itemGroup, FabricItemGroupEntries::add);
     }
