@@ -3,15 +3,15 @@
 	"id": "nexuscarry",
 	"version": "${version}",
 	"name": "NexusCarry",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A mod that adds equipment for carrying items - the Satchel and the Backpack",
 	"authors": [
 		"Farpo",
 		"DinoTheOogle"
 	],
 	"accessWidener" : "nexuscarry.accesswidener",
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://nexusrealms.de",
+		"sources": "https://github.com/Nexusrealms/nexuscarry"
 	},
 	"license": "MIT",
 	"icon": "assets/nexuscarry/icon.png",
@@ -34,7 +34,8 @@
 		"fabricloader": ">=0.17.2",
 		"minecraft": "~1.21.8",
 		"java": ">=21",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"trinkets": "*"
 	},
 	"suggests": {
 		"dip-dye": "*"
