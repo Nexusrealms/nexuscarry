@@ -7,7 +7,9 @@ import dev.emi.trinkets.api.client.TrinketRenderer;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.RenderLayers;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.state.EntityRenderState;
 import net.minecraft.client.render.entity.state.LivingEntityRenderState;
@@ -39,9 +41,8 @@ public class BagRenderer implements TrinketRenderer {
         this.strapTexture = strapTexture;
     }
 
-
     @Override
-    public void render(ItemStack stack, SlotReference slotReference, EntityModel<? extends LivingEntityRenderState> contextModel, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, LivingEntityRenderState state, float limbAngle, float limbDistance) {
+    public void render(ItemStack stack, SlotReference slotReference, EntityModel<? extends LivingEntityRenderState> contextModel, MatrixStack matrices, OrderedRenderCommandQueue vertexConsumers, int light, LivingEntityRenderState state, float limbAngle, float limbDistance) {
         if(overlayModel == null){
             overlayModel = new SatchelModel(overlayLayer.get().createModel());
         }
@@ -53,10 +54,8 @@ public class BagRenderer implements TrinketRenderer {
         }
         int color = BagItem.getColor(stack, DataComponentTypes.DYED_COLOR, 0xffcba4);
         int strapColor = BagItem.getColor(stack, CarryItems.Components.BAG_STRAP_COLOR, 0xffa8a8);
-        overlayModel.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(overlayTexture)), light, OverlayTexture.DEFAULT_UV, 0xffffffff);
-        baseModel.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(baseTexture)), light, OverlayTexture.DEFAULT_UV, color);
-        strapModel.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(strapTexture)), light, OverlayTexture.DEFAULT_UV, strapColor);
-
+        vertexConsumers.submitModel(overlayModel, state, matrices, RenderLayers.entityTranslucent(overlayTexture), light, OverlayTexture.DEFAULT_UV, 0xffffffff, null, 0, null);
+        vertexConsumers.submitModel(baseModel, state, matrices, RenderLayers.entityTranslucent(baseTexture), light, OverlayTexture.DEFAULT_UV, color, null, 0,null);
+        vertexConsumers.submitModel(strapModel, state, matrices, RenderLayers.entityTranslucent(strapTexture), light, OverlayTexture.DEFAULT_UV, strapColor, null, 0,null);
     }
-
 }

@@ -1,11 +1,14 @@
 package de.nexusrealms.carry.item;
 
-import dev.emi.trinkets.api.*;
+import dev.emi.trinkets.api.SlotReference;
+import dev.emi.trinkets.api.TrinketItem;
+import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.component.ComponentType;
 import net.minecraft.component.type.DyedColorComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.DyeItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.screen.GenericContainerScreenHandler;
@@ -20,7 +23,7 @@ import java.util.List;
 
 public class BagItem extends TrinketItem {
     private final int rows;
-    public BagItem(int rows, Settings settings) {
+    public BagItem(int rows, Item.Settings settings) {
         super(settings);
         this.rows = rows;
     }

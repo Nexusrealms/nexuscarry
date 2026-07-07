@@ -2,6 +2,7 @@ package de.nexusrealms.carry.item;
 
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ContainerComponent;
+import net.minecraft.entity.ContainerUser;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
@@ -81,7 +82,7 @@ public class BagInventory implements Inventory {
     }
 
     @Override
-    public void onClose(PlayerEntity player) {
+    public void onClose(ContainerUser player) {
         markDirty();
     }
 }

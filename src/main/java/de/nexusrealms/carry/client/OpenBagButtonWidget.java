@@ -9,6 +9,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ButtonTextures;
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.client.gui.widget.PressableWidget;
+import net.minecraft.client.input.AbstractInput;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.ColorHelper;
@@ -19,14 +20,14 @@ public class OpenBagButtonWidget extends PressableWidget {
         super(x, y, width, height, text);
     }
 
-    protected void renderWidget(DrawContext context, int mouseX, int mouseY, float deltaTicks) {
-        context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, BUTTON_TEXTURES.get(true, isHovered()),  this.getX(), this.getY(),  20, 20);
-        //int i = ColorHelper.withAlpha(this.alpha, this.active ? -1 : -6250336);
+    @Override
+    public void onPress(AbstractInput input) {
+        ClientPlayNetworking.send(OpenBagPacket.INSTANCE);
     }
 
     @Override
-    public void onPress() {
-        ClientPlayNetworking.send(OpenBagPacket.INSTANCE);
+    protected void drawIcon(DrawContext context, int mouseX, int mouseY, float deltaTicks) {
+        context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, BUTTON_TEXTURES.get(true, isHovered()),  this.getX(), this.getY(),  20, 20);
     }
 
     @Override
