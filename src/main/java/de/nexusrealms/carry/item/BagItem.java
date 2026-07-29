@@ -1,10 +1,16 @@
 package de.nexusrealms.carry.item;
 
+import de.nexusrealms.carry.NexusCarry;
 import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.TrinketItem;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.component.ComponentType;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ContainerComponent;
 import net.minecraft.component.type.DyedColorComponent;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.DyeItem;
@@ -15,14 +21,21 @@ import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.ColorHelper;
+import org.jspecify.annotations.Nullable;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public class BagItem extends TrinketItem {
     private final int rows;
+    public static Set<LivingEntity> awaitsCleaningPass= HashSet.newHashSet(1);
     public BagItem(int rows, Item.Settings settings) {
         super(settings);
         this.rows = rows;
@@ -38,6 +51,23 @@ public class BagItem extends TrinketItem {
                 .findFirst()
                 .ifPresent(stack -> ((BagItem) stack.getItem()).openScreen(player, stack));
     }
+
+    @Override
+    public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
+        if(entity instanceof LivingEntity l && awaitsCleaningPass.contains(l)) {
+            stack.set(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT);
+            awaitsCleaningPass.remove(entity);
+        }
+    }
+    @Override
+    public void onUnequip(ItemStack stack, SlotReference slot, LivingEntity entity) {
+        if(entity.getEntityWorld() instanceof ServerWorld world && world.getGameRules().getValue(NexusCarry.DROP_ITEMS_WHEN_UNEQUIPPED)) {
+            ContainerComponent inv = stack.get(DataComponentTypes.CONTAINER);
+            inv.stream().forEach(itemStack -> entity.dropStack(world, itemStack));
+            awaitsCleaningPass.add(entity);
+        }
+    }
+
 
     public static int getColor(ItemStack stack, ComponentType<DyedColorComponent> componentType, int fallback) {
         DyedColorComponent dyedColorComponent = stack.get(componentType);

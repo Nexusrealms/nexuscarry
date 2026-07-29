@@ -4,8 +4,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "ArmorDyeRecipeMixin",
-    "ExampleMixin",
-    "GenericContainerScreenHandlerMixin"
+    "GenericContainerScreenHandlerMixin",
   ],
   "injectors": {
     "defaultRequire": 1
