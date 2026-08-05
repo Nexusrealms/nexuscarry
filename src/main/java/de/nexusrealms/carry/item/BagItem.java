@@ -30,12 +30,13 @@ import org.jspecify.annotations.Nullable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 public class BagItem extends TrinketItem {
     private final int rows;
-    public static Set<LivingEntity> awaitsCleaningPass= HashSet.newHashSet(1);
+    public static Set<UUID> awaitsCleaningPass= HashSet.newHashSet(1);
     public BagItem(int rows, Item.Settings settings) {
         super(settings);
         this.rows = rows;
@@ -54,20 +55,27 @@ public class BagItem extends TrinketItem {
 
     @Override
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
-        if(entity instanceof LivingEntity l && awaitsCleaningPass.contains(l)) {
-            stack.set(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT);
-            awaitsCleaningPass.remove(entity);
-        }
-    }
-    @Override
-    public void onUnequip(ItemStack stack, SlotReference slot, LivingEntity entity) {
-        if(entity.getEntityWorld() instanceof ServerWorld world && world.getGameRules().getValue(NexusCarry.DROP_ITEMS_WHEN_UNEQUIPPED)) {
+        if(!awaitsCleaningPass.isEmpty() && awaitsCleaningPass.contains(stack.get(CarryItems.Components.BAG_ID))) {
             ContainerComponent inv = stack.get(DataComponentTypes.CONTAINER);
             inv.stream().forEach(itemStack -> entity.dropStack(world, itemStack));
-            awaitsCleaningPass.add(entity);
+            stack.set(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT);
+            awaitsCleaningPass.remove(stack.get(CarryItems.Components.BAG_ID));
         }
     }
 
+    @Override
+    public void onEquip(ItemStack stack, SlotReference slot, LivingEntity entity) {
+        if(!stack.contains(CarryItems.Components.BAG_ID)){
+            stack.set(CarryItems.Components.BAG_ID, UUID.randomUUID());
+        }
+    }
+
+    @Override
+    public void onUnequip(ItemStack stack, SlotReference slot, LivingEntity entity) {
+        if(entity.getEntityWorld() instanceof ServerWorld world && world.getGameRules().getValue(NexusCarry.DROP_ITEMS_WHEN_UNEQUIPPED)) {
+            awaitsCleaningPass.add(stack.get(CarryItems.Components.BAG_ID));
+        }
+    }
 
     public static int getColor(ItemStack stack, ComponentType<DyedColorComponent> componentType, int fallback) {
         DyedColorComponent dyedColorComponent = stack.get(componentType);

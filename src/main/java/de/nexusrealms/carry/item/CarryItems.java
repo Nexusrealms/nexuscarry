@@ -20,7 +20,9 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.Unit;
+import net.minecraft.util.Uuids;
 
+import java.util.UUID;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
@@ -44,8 +46,7 @@ public class CarryItems {
 
     public static class Components {
         public static final ComponentType<DyedColorComponent> BAG_STRAP_COLOR = create("bag_strap_color", DyedColorComponent.CODEC, DyedColorComponent.PACKET_CODEC);
-        public static final ComponentType<Unit> CLEAR_ITEMS_ON_UPDATE = create("clear_items_on_update", Unit.CODEC, Unit.PACKET_CODEC);
-
+        public static final ComponentType<UUID> BAG_ID = create("bag_id", Uuids.CODEC, Uuids.PACKET_CODEC);
         private static <T> ComponentType<T> create(String name, Codec<T> codec, PacketCodec<? super RegistryByteBuf, T> packetCodec){
             return Registry.register(Registries.DATA_COMPONENT_TYPE, NexusCarry.id(name), ComponentType.<T>builder().codec(codec).packetCodec(packetCodec).build());
         }

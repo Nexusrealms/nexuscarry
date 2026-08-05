@@ -5,6 +5,8 @@
   "mixins": [
     "ArmorDyeRecipeMixin",
     "GenericContainerScreenHandlerMixin",
+    ,
+    "ItemStackMixin"
   ],
   "injectors": {
     "defaultRequire": 1
