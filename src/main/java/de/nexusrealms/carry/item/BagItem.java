@@ -57,6 +57,9 @@ public class BagItem extends TrinketItem {
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
         if(!awaitsCleaningPass.isEmpty() && awaitsCleaningPass.contains(stack.get(CarryItems.Components.BAG_ID))) {
             ContainerComponent inv = stack.get(DataComponentTypes.CONTAINER);
+            if(inv == null){
+                return;
+            }
             inv.stream().forEach(itemStack -> entity.dropStack(world, itemStack));
             stack.set(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT);
             awaitsCleaningPass.remove(stack.get(CarryItems.Components.BAG_ID));
