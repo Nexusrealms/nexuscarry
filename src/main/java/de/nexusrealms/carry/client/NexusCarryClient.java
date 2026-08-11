@@ -13,6 +13,7 @@ public class NexusCarryClient implements ClientModInitializer {
     }
     private static void initTrinketRenderers(){
         TrinketRendererRegistry.registerRenderer(CarryItems.SATCHEL, new BagRenderer(
+                SatchelModel::new,
                 SatchelModel::getBaseTexturedModeData,
                 SatchelModel::getDyedTexturedModeData,
                 SatchelModel::getStrapTexturedModeData,
@@ -21,6 +22,7 @@ public class NexusCarryClient implements ClientModInitializer {
                 NexusCarry.id("textures/item/wearable/satchel_straps.png")
         ));
         TrinketRendererRegistry.registerRenderer(CarryItems.BACKPACK, new BagRenderer(
+                BackpackModel::new,
                 BackpackModel::getBaseTexturedModeData,
                 BackpackModel::getDyedTexturedModeData,
                 BackpackModel::getStrapTexturedModeData,
