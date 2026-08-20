@@ -65,8 +65,7 @@ public class NexusCarry implements ModInitializer {
 		CarryRecipes.init();
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(CommandManager.literal("bagsee")
 				.then(CommandManager.argument("player", EntityArgumentType.player())
-						.requires(CommandManager.requirePermissionLevel(new PermissionCheck.Require(DefaultPermissions.MODERATORS)))
-						.requires(ServerCommandSource::isExecutedByPlayer)
+						.requires(s -> s.isExecutedByPlayer() && CommandManager.requirePermissionLevel(new PermissionCheck.Require(DefaultPermissions.MODERATORS)).test(s))
 						.executes(context -> {
 							ServerPlayerEntity player = EntityArgumentType.getPlayer(context, "player");
 							List<Pair<SlotReference, ItemStack>> list = player.getComponent(TrinketsApi.TRINKET_COMPONENT)
